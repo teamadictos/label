@@ -12,32 +12,31 @@ export default function Home() {
 
   const focusBox = { top: 30, left: 10, width: 80, height: 30 };
 
+  // 1. Importaciones (Arriba de todo)
+import React, { useRef, useState, useCallback } from 'react';
+// ... otras importaciones
+
+export default function Home() {
+  // 2. Definición de Estados y Refs
+  const webcamRef = useRef(null);
+  const [data, setData] = useState([]);
+  // ...
+
+  // ******************************************
+  // AQUÍ ES DONDE SUSTITUYES LA FUNCIÓN:
+  // ******************************************
   const capture = useCallback(async () => {
-    setIsProcessing(true);
-    const imageSrc = webcamRef.current.getScreenshot();
-    if (imageSrc) {
-      try {
-        const image = new Image();
-        image.src = imageSrc;
-        await image.decode();
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        const sX = (focusBox.left * image.width) / 100;
-        const sY = (focusBox.top * image.height) / 100;
-        const sW = (focusBox.width * image.width) / 100;
-        const sH = (focusBox.height * image.height) / 100;
-        canvas.width = sW; canvas.height = sH;
-        ctx.drawImage(image, sX, sY, sW, sH, 0, 0, sW, sH);
-        const result = await Tesseract.recognize(canvas.toDataURL('image/jpeg'), 'spa+eng');
-        const text = result.data.text.trim();
-        if (text) {
-          setData(prev => [{ id: Date.now(), fecha: new Date().toLocaleTimeString(), detalle: text }, ...prev]);
-          setShowHistory(true);
-        }
-      } catch (e) { console.error(e); }
-    }
-    setIsProcessing(false);
-  }, [webcamRef]);
+    // ... pega aquí el nuevo código con los alerts ...
+  }, [webcamRef, isProcessing]); 
+  // ******************************************
+
+  // 3. El resto del código y el "return" (lo que se ve en pantalla)
+  return (
+    <div style={{ ... }}>
+      {/* ... contenido de la app ... */}
+    </div>
+  );
+}
 
   return (
     <div style={{ backgroundColor: '#000', minHeight: '100vh', color: '#fff', position: 'relative', overflow: 'hidden', fontFamily: 'sans-serif' }}>
