@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Webcam from 'react-webcam';
 import Tesseract from 'tesseract.js';
 import * as XLSX from 'xlsx';
-import { FileSpreadsheet, Trash2, Loader2, Sparkles, X, ScanText } from 'lucide-react';
+import { FileSpreadsheet, Trash2, Loader2, Sparkles, X, Scan } from 'lucide-react';
 
 export default function Home() {
   const webcamRef = useRef(null);
@@ -96,7 +96,7 @@ export default function Home() {
               <div className="absolute -bottom-1.5 -right-1.5 w-6 h-6 border-b-4 border-r-4 border-white rounded-br-md"></div>
               
               <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-white/10 text-white/70 px-3 py-1 rounded-full text-xs flex items-center gap-1.5 backdrop-blur-sm">
-                 <ScanText size={14} /> Alinea el texto
+                <Scan size="{14}"/> Alinea el texto
               </div>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function Home() {
               <div className="space-y-3 flex-grow overflow-y-auto pr-2">
                 {data.length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-slate-600 gap-4">
-                     <ScanText size={60} strokeWidth={1}/>
+                     <Scan size="{60}" strokeWidth="{1}"/>
                      <p className="text-center font-medium">Usa la cámara para capturar texto<br/>Aparecerá aquí.</p>
                   </div>
                 ) : (
